@@ -1,0 +1,54 @@
+body {
+  margin: 0;
+  user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -ms-touch-select: none;
+  -webkit-user-select: none;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  height: 80px;
+  font-size: 25px;
+  font-family: Arial, Helvetica, sans-serif;
+  padding-left: 20px;
+  color: #1d46b8;
+  background-color: white;
+  box-shadow: 1px 1px grey;
+}
+@media (max-width: 400px) {
+  header {
+    font-size: 15px;
+  }
+}
+.button {
+  outline: none;
+  border: none;
+  font-size: 12px;
+  position: absolute;
+  right: 20px;
+  padding: 10px;
+  cursor: pointer;
+  background-color: #ffffff;
+}
+.button:hover {
+  background-color: #eeeeee;
+}
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+p {
+  margin-left: 20px;
+  font-size: 18px;
+  font-family: Nunito;
+}
+.allLogs {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px 1px 1px 1px dashed grey;
+}
