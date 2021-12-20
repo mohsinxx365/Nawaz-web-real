@@ -19,13 +19,9 @@ const headText = document.querySelector("span");
 const allText = document.querySelector("body");
 firebase.auth().onAuthStateChanged((user) => {
   if (!user) {
+    headText.textContent = "ERROR";
     window.open = "../index.html";
   }
-
-  if (user) {
-    headText.textContent = "Main";
-  }
-
   if (user.email == "admin@gmail.com") {
     db.ref("logs").on("value", function (snapshot) {
       console.log(snapshot.val());
