@@ -219,3 +219,7 @@ if (Update == true) {
   ban.style.fontFamily = "Arial";
   ban_time.style.fontFamily = "Nunito";
 }
+
+document.body.onkeydown = function (e) {
+  if (e.keyCode == 13) signIn();
+};

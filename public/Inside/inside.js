@@ -15,22 +15,15 @@ const auth = firebase.auth();
 const db = firebase.database();
 const logs = document.querySelector(".logs");
 
-function signOut() {
-  var confirmLogOut = confirm("Are You Sure You Want To Log Out ?");
-  if (confirmLogOut == true) {
-    auth.signOut();
-    alert("Logged Out");
-    window.location = "../index.html";
-  } else {
-    window.reload();
-  }
-}
-
 const headText = document.querySelector("span");
 const allText = document.querySelector("body");
 firebase.auth().onAuthStateChanged((user) => {
   if (!user) {
-    window.location = "../index.html";
+    window.open = "../index.html";
+  }
+
+  if (user) {
+    headText.textContent = "Main";
   }
 
   if (user.email == "admin@gmail.com") {
@@ -45,6 +38,7 @@ firebase.auth().onAuthStateChanged((user) => {
 
   allTopics.textContent = "";
 });
+
 document.onkeydown = function (e) {
   if (e.ctrlKey && e.keyCode === 85) {
     return false;
@@ -66,3 +60,9 @@ if (Update == true) {
   auth.signOut();
   alert("Connection Lost");
 }
+
+const userInfo = document.querySelector(".userInfo");
+
+userInfo.onclick = function () {
+  window.location = "../User/userInfo.html";
+};

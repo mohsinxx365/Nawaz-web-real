@@ -1,0 +1,78 @@
+.profile {
+  display: flex;
+  justify-content: center;
+  font-family: sans-serif;
+}
+.userDetails {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+  font-family: montserrat;
+  flex-direction: column;
+}
+.email {
+  margin-bottom: 40px;
+}
+@media (max-width: 500px) {
+  .email {
+    font-size: 15px;
+  }
+}
+@media (max-width: 380px) {
+  .email {
+    font-size: 12px;
+  }
+}
+.uid {
+  margin-bottom: 40px;
+}
+@media (max-width: 500px) {
+  .uid {
+    font-size: 15px;
+  }
+}
+@media (max-width: 380px) {
+  .uid {
+    font-size: 12px;
+  }
+}
+.createTime {
+  margin-bottom: 40px;
+}
+@media (max-width: 500px) {
+  .createTime {
+    font-size: 13px;
+  }
+}
+@media (max-width: 380px) {
+  .createTime {
+    font-size: 10px;
+  }
+}
+@media (max-width: 500px) {
+  .ipAdress {
+    font-size: 15px;
+  }
+}
+@media (max-width: 380px) {
+  .ipAdress {
+    font-size: 12px;
+  }
+}
+.buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+.back {
+  width: 100px;
+  height: 30px;
+  margin-right: 20px;
+  cursor: pointer;
+}
+.logOut {
+  width: 100px;
+  height: 30px;
+  cursor: pointer;
+}
