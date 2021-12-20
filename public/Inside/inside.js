@@ -20,7 +20,7 @@ const allText = document.querySelector("body");
 firebase.auth().onAuthStateChanged((user) => {
   if (!user) {
     headText.textContent = "ERROR";
-    window.open = "../index.html";
+    window.location = "../index.html";
   }
   if (user.email == "admin@gmail.com") {
     db.ref("logs").on("value", function (snapshot) {
