@@ -60,5 +60,5 @@ if (Update == true) {
 const userInfo = document.querySelector(".userInfo");
 
 userInfo.onclick = function () {
-  window.location = "/User/userInfo.html";
+  window.location = "../User/userInfo.html";
 };
