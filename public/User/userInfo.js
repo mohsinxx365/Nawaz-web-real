@@ -31,6 +31,10 @@ firebase.auth().onAuthStateChanged((user) => {
       "Account Create Time : " + user.metadata.creationTime;
   }
   ipAdress.textContent = "IP adress : " + ip_address;
+  if (!user) {
+    window.location = "../index.html";
+    ipAdress.textContent = "Access denied !";
+  }
 });
 function signOut() {
   var confirmLogOut = confirm("Are You Sure You Want To Log Out ?");
@@ -47,3 +51,6 @@ const back = document.querySelector(".back");
 back.onclick = function () {
   window.history.back();
 };
+if (ipAdress.textContent == "undefined") {
+  window.location = "./userInfo.html";
+}

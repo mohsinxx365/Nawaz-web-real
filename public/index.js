@@ -109,10 +109,10 @@ function signIn() {
       "The user account has been disabled by an administrator."
     ) {
       container.textContent = "";
-      ban.textContent = "YOU HAVE BEEN BANNED !";
-      ban_time.textContent = "Ban Time : Unknown";
+      ban.textContent = "This account has been banned !";
+      ban_time.textContent = "Ban Time : Forever";
       ban_Reason.textContent = "Reason : Unknown";
-      title.textContent = "Banned";
+      title.textContent = "Banned !";
       ok.textContent = "OK";
       ok.style.backgroundColor = "#3428a7";
       ok.style.width = "200px";
@@ -212,14 +212,35 @@ if (Update == true) {
   const body = document.querySelector("body");
   ban.textContent = "Update Under Progress !";
   ban_time.textContent = "Estimated Time : Unknown";
-  ban_Reason.textContent =
-    "There will be many Bug fixes and other changes also";
+  ban_Reason.textContent = "Design Changes and some more ..";
   ban.style.fontSize = "30px";
-  ban.style.color = "blue";
+  ban.style.color = "red";
   ban.style.fontFamily = "Arial";
   ban_time.style.fontFamily = "Nunito";
+  ok.textContent = "Reload";
+  ok.style.backgroundColor = "#0039BF";
+  ok.style.color = "white";
+  ok.style.width = "150px";
+  ok.style.height = "40px";
+  ok.style.borderRadius = "1px";
+  ok.style.cursor = "pointer";
 }
 
 document.body.onkeydown = function (e) {
   if (e.keyCode == 13) signIn();
 };
+
+document.onreadystatechange = function () {
+  if (document.readyState === "complete") {
+    ban.textContent = "Loaded ...";
+    setTimeout(() => {
+      ban.remove();
+    }, 500);
+  }
+};
+
+if (document.readyState === "interactive") {
+  title.textContent = "Loading ...";
+  ban.textContent = "Loading ...";
+  ban.style.color = "blue";
+}

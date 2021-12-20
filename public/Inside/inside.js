@@ -56,9 +56,16 @@ if (Update == true) {
   auth.signOut();
   alert("Connection Lost");
 }
-
-const userInfo = document.querySelector(".userInfo");
-
-userInfo.onclick = function () {
-  window.location = "../User/userInfo.html";
+document.onreadystatechange = function () {
+  if (document.readyState === "complete") {
+    loading.textContent = "Loaded ...";
+    setTimeout(() => {
+      loading.remove();
+    }, 500);
+  }
 };
+const loading = document.querySelector(".loading");
+if (document.readyState === "interactive") {
+  loading.textContent = "Loading ...";
+  loading.style.color = "blue";
+}
