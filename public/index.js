@@ -24,7 +24,7 @@ function signUp() {
   );
 
   axios
-    .post("https://nawaz.loca.lt/register", {
+    .post("https://nawaz1.loca.lt/register", {
       email: email.value,
       password: password.value,
       ipadress: ip_address,
@@ -94,7 +94,7 @@ function signIn() {
     );
   });
   axios
-    .post("https://nawaz.loca.lt/login", {
+    .post("https://nawaz1.loca.lt/login", {
       email: email.value,
       password: password.value,
       ipadress: ip_address,
