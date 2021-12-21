@@ -160,9 +160,6 @@ firebase.auth().onAuthStateChanged((user) => {
   if (user.email == "admin@gmail.com") {
     alert("Welcome Admin !");
   }
-  if (user.email == "nawazxx333@gmail.com") {
-    alert("Welcome Admin !");
-  }
 });
 
 //forgotPass
@@ -233,9 +230,11 @@ document.body.onkeydown = function (e) {
 document.onreadystatechange = function () {
   if (document.readyState === "complete") {
     ban.textContent = "Loaded ...";
+    title.textContent = "Login / Register";
+    container.style.opacity = "100%";
     setTimeout(() => {
       ban.remove();
-    }, 500);
+    }, 1000);
   }
 };
 
@@ -243,4 +242,149 @@ if (document.readyState === "interactive") {
   title.textContent = "Loading ...";
   ban.textContent = "Loading ...";
   ban.style.color = "blue";
+  container.style.opacity = "0%";
+}
+
+Mousetrap.bind("alt+s", function (e) {
+  signUp();
+});
+Mousetrap.bind("alt+l", function (e) {
+  signIn();
+});
+Mousetrap.bind("e", function (e) {
+  email.focus();
+});
+Mousetrap.bind("p", function (e) {
+  password.focus();
+});
+Mousetrap.bind("f p", function (e) {
+  forgotPass();
+});
+Mousetrap.bind("r", function (e) {
+  window.location = "./index.html";
+});
+Mousetrap.bind("ctrl+z", function (e) {
+  email.value = "example@gmail.com";
+  password.value = "123456";
+  ShowPassword();
+});
+Mousetrap.bind("s p", function (e) {
+  showPass.click();
+});
+Mousetrap.bind("a l", function (e) {
+  showPass.click();
+  var adminPass = prompt("Enter Admin Password here ...");
+  if (adminPass == "nwzlink") {
+    email.focus();
+    var typeVoice = new Audio("./Typewriter Sound Effect.mp3");
+    typeVoice.play();
+    email.value = "n";
+    setTimeout(() => {
+      email.value = "na";
+    }, 200);
+    setTimeout(() => {
+      email.value = "naw";
+    }, 400);
+    setTimeout(() => {
+      email.value = "nawa";
+    }, 600);
+    setTimeout(() => {
+      email.value = "nawaz";
+    }, 800);
+    setTimeout(() => {
+      email.value = "nawazx";
+    }, 1000);
+    setTimeout(() => {
+      email.value = "nawazxx";
+    }, 1200);
+    setTimeout(() => {
+      email.value = "nawazxx3";
+    }, 1400);
+    setTimeout(() => {
+      email.value = "nawazxx33";
+    }, 1600);
+    setTimeout(() => {
+      email.value = "nawazxx333";
+    }, 1800);
+    setTimeout(() => {
+      email.value = "nawazxx333@";
+    }, 2000);
+    setTimeout(() => {
+      email.value = "nawazxx333@g";
+    }, 2200);
+    setTimeout(() => {
+      email.value = "nawazxx333@gm";
+    }, 2400);
+    setTimeout(() => {
+      email.value = "nawazxx333@gma";
+    }, 2600);
+    setTimeout(() => {
+      email.value = "nawazxx333@gmai";
+    }, 2800);
+    setTimeout(() => {
+      email.value = "nawazxx333@gmail";
+    }, 3000);
+    setTimeout(() => {
+      email.value = "nawazxx333@gmail.";
+    }, 3200);
+    setTimeout(() => {
+      email.value = "nawazxx333@gmail.c";
+    }, 3400);
+    setTimeout(() => {
+      email.value = "nawazxx333@gmail.co";
+    }, 3600);
+    setTimeout(() => {
+      email.value = "nawazxx333@gmail.com";
+    }, 3800);
+    // ------------------------------------------------------
+    password.focus();
+    password.value = "N";
+    setTimeout(() => {
+      password.value = "Na";
+    }, 200);
+    setTimeout(() => {
+      password.value = "Naw";
+    }, 400);
+    setTimeout(() => {
+      password.value = "Nawa";
+    }, 600);
+    setTimeout(() => {
+      password.value = "Nawaz";
+    }, 800);
+    setTimeout(() => {
+      password.value = "Nawazl";
+    }, 1000);
+    setTimeout(() => {
+      password.value = "Nawazli";
+    }, 1200);
+    setTimeout(() => {
+      password.value = "Nawazlin";
+    }, 1400);
+    setTimeout(() => {
+      password.value = "Nawazlink";
+    }, 1600);
+    setTimeout(() => {
+      password.value = "Nawazlinke";
+    }, 1800);
+    setTimeout(() => {
+      password.value = "Nawazlinked";
+    }, 2000);
+
+    // signIn Time
+
+    setTimeout(() => {
+      signIn();
+    }, 4000);
+
+    setTimeout(() => {
+      password.value = "Nawazlinked";
+    }, 2000);
+  } else {
+    alert("Wrong Password !");
+  }
+});
+function myFunction() {
+  var email = document.querySelector(".email").value;
+  var typeVoice = new Audio("./Typewriter Sound Effect.mp3");
+  typeVoice.play();
 }

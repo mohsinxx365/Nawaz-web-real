@@ -56,16 +56,8 @@ if (Update == true) {
   auth.signOut();
   alert("Connection Lost");
 }
-document.onreadystatechange = function () {
-  if (document.readyState === "complete") {
-    loading.textContent = "Loaded ...";
-    setTimeout(() => {
-      loading.remove();
-    }, 500);
-  }
-};
-const loading = document.querySelector(".loading");
-if (document.readyState === "interactive") {
-  loading.textContent = "Loading ...";
-  loading.style.color = "blue";
-}
+
+const userInfo = document.querySelector(".userInfo");
+Mousetrap.bind("alt+p", function (e) {
+  userInfo.click();
+});

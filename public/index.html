@@ -16,10 +16,11 @@
     <script src="https://gstatic.com/firebasejs/8.2.7/firebase-auth.js"></script>
     <script src="https://gstatic.com/firebasejs/8.2.7/firebase-database.js"></script>
     <script defer src="https://api.ipify.org?format=jsonp&callback=DisplayIP"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/mousetrap/1.4.6/mousetrap.min.js"></script>
 </head>
 
-<body>
 
+<body>
     <div class="ban"></div>
     <div class="ban_time"></div>
     <div class="ban_reason"></div>
@@ -34,8 +35,9 @@
     <div class="container">
         <div class="card">
             <div class="formContainer">
+
                 <h1>Login / Register</h1>
-                <input type="email" placeholder="Email" id="email" class="email">
+                <input type="email" placeholder="Email" id="email" class="email" oninput="myFunction()">
                 <input type="password" placeholder="Password" id="password" class="password">
                 <div class="check">
                     <div class="showText">Show Password</div><input type="checkbox" class="showPass"
@@ -49,11 +51,7 @@
         </div>
     </div>
     <script>
-
-
-
     </script>
-
 </body>
 
 </html>

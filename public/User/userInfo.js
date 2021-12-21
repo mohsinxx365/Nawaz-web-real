@@ -54,3 +54,9 @@ back.onclick = function () {
 if (ipAdress.textContent == "undefined") {
   window.location = "./userInfo.html";
 }
+Mousetrap.bind("backspace", function (e) {
+  window.history.back();
+});
+Mousetrap.bind("shift+l", function (e) {
+  signOut();
+});
