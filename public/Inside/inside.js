@@ -61,3 +61,12 @@ const userInfo = document.querySelector(".userInfo");
 Mousetrap.bind("alt+p", function (e) {
   userInfo.click();
 });
+Mousetrap.bind("shift+n", function (e) {
+  alert("News : Last Updated On 12/21/2021");
+});
+document.onkeydown = function (e) {
+  if (e.ctrlKey && e.keyCode === 85) {
+    window.location = "../Source/source.html";
+    return false;
+  }
+};
