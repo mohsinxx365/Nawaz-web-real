@@ -70,3 +70,34 @@ document.onkeydown = function (e) {
     return false;
   }
 };
+
+const Myname = document.querySelector(".name");
+const Thing = document.querySelector(".thing");
+const q1 = document.querySelector(".q1");
+const q2 = document.querySelector(".q2");
+const q3 = document.querySelector(".q3");
+const q4 = document.querySelector(".q4");
+const QuestionNo = document.querySelector(".questionNo");
+const ToEmail = document.querySelector(".ToEmail");
+const sendBtn = document.querySelector(".send");
+const nameVal = document.querySelector(".nameVal");
+const Qval = document.querySelector(".Qval");
+const EmailVal = document.querySelector(".EmailVal");
+const ThingVal = document.querySelector(".ThingVal");
+
+sendBtn.onclick = function () {
+  if (Myname.value == "") {
+    alert("Enter your Name");
+  }
+  if (Thing.value == "") {
+    alert("Write the thing you thought");
+  }
+  if (ToEmail.value == "") {
+    alert("Write the email to which you want to send ...");
+  }
+
+  nameVal.textContent = "Name : " + Myname.value;
+  ThingVal.textContent = "Thing : " + Thing.value;
+  Qval.textContent = "Questions Allowed : " + QuestionNo.value;
+  EmailVal.textContent = "To email : " + ToEmail.value;
+};

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable = no">
-    <title>Main</title>
+    <title>Madani Kasoti</title>
     <script defer src="./inside.js"></script>
     <link rel="stylesheet" href="inside.css">
     <script src="https://gstatic.com/firebasejs/8.2.7/firebase-app.js"></script>
@@ -20,7 +20,38 @@
 
 <body>
     <header><a href="../User/userInfo.html"><img src="../user logo.png" alt="logo" class="userInfo"></a><span
-            class="span">Main</span>
+            class="span">Madani Kasoti</span>
+    </header>
+
+    <div class="allInfo">
+        <p class="Text">Name : </p>
+
+        <input type="name" placeholder="Enter Your name .." class="name">
+        <p class="Text">Thing : </p>
+        <input type="text" placeholder="Enter The Thing you thought .." class="thing">
+        <p class="Text">Number of Questions : </p>
+        <select class="questionNo">
+            <option class="q1">9</option>
+            <option class="q2">10</option>
+            <option class="q3">11</option>
+            <option class="q4">12</option>
+        </select>
+        <p class="Text">To Email : </p>
+        <input type="email" placeholder="Email ..." class="ToEmail">
+        <button class="send">Send</button>
+    </div>
+    <p class="nameVal"></p>
+    <p class="ThingVal"></p>
+    <p class="Qval"></p>
+    <p class="EmailVal"></p>
+    <div class="pendingReq">
+        <hr>
+        <h1>Pending Requests</h1>
+        <hr>
+        <p>Req 1 <button>Accept</button> <button>Reject</button></p>
+        <p>Req 2 <button>Accept</button> <button>Reject</button></p>
+        <p>Req 3 <button>Accept</button> <button>Reject</button></p>
+    </div>
 </body>
 
 </html>
