@@ -207,7 +207,7 @@ if (Update == true) {
   const body = document.querySelector("body");
   var information = document.querySelector(".info");
   information.style.fontFamily = "Nunito";
-  information.style.fontSize = "20px";
+  information.style.fontSize = "15px";
   information.style.fontWeight = "bold";
   setTimeout(() => {
     information.textContent =
@@ -248,7 +248,7 @@ if (Update == true) {
   ban.textContent = "Update Under Progress !";
   ban_time.textContent = "Estimated Time : Unknown";
   ban_Reason.textContent = "Design Changes and some more ..";
-  ban.style.fontSize = "30px";
+  ban.style.fontSize = "25px";
   ban.style.color = "red";
   ban.style.fontFamily = "Arial";
   ban_time.style.fontFamily = "Nunito";
