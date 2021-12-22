@@ -200,7 +200,7 @@ function ShowPassword() {
 
 // Update Code
 
-var Update = true;
+var Update = false;
 if (Update == true) {
   container.textContent = "";
   title.textContent = "Update !";
