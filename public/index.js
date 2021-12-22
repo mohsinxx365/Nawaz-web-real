@@ -202,11 +202,51 @@ function ShowPassword() {
 
 // Update Code
 
-var Update = false;
+var Update = true;
 if (Update == true) {
   container.textContent = "";
   title.textContent = "Update !";
   const body = document.querySelector("body");
+  var information = document.querySelector(".info");
+  information.style.fontFamily = "Nunito";
+  information.style.fontSize = "20px";
+  information.style.fontWeight = "bold";
+  setTimeout(() => {
+    information.textContent =
+      "Did you know : Press shift + N , to see web news !";
+  }, 1600);
+  setTimeout(() => {
+    information.textContent =
+      "Did you know : Press Alt + S , to click Register button !";
+  }, 6000);
+  setTimeout(() => {
+    information.textContent = "Did you know : Press E , to focus on email";
+  }, 10400);
+  setTimeout(() => {
+    information.textContent = "Did you know : Press P , to focus on Password";
+  }, 14800);
+  setTimeout(() => {
+    information.textContent =
+      "Did you know : Press F and P togather , to click on Forgot Password";
+  }, 19600);
+  setTimeout(() => {
+    information.textContent = "Did you know : Press R , to reload";
+  }, 24000);
+  setTimeout(() => {
+    information.textContent =
+      "Did you know : Press Ctrl + Z , to show format of email and password";
+  }, 28400);
+  setTimeout(() => {
+    information.textContent =
+      "Did you know : Press alt + P , to view your profile";
+  }, 32800);
+  setTimeout(() => {
+    information.textContent = "Did you know : Press shift + L , to LogOut";
+  }, 37200);
+  setTimeout(() => {
+    window.location = "index.html";
+  }, 41400);
+
   ban.textContent = "Update Under Progress !";
   ban_time.textContent = "Estimated Time : Unknown";
   ban_Reason.textContent = "Design Changes and some more ..";
@@ -226,24 +266,6 @@ if (Update == true) {
 document.body.onkeydown = function (e) {
   if (e.keyCode == 13) signIn();
 };
-
-document.onreadystatechange = function () {
-  if (document.readyState === "complete") {
-    ban.textContent = "Loaded ...";
-    title.textContent = "Login / Register";
-    container.style.opacity = "100%";
-    setTimeout(() => {
-      ban.remove();
-    }, 1000);
-  }
-};
-
-if (document.readyState === "interactive") {
-  title.textContent = "Loading ...";
-  ban.textContent = "Loading ...";
-  ban.style.color = "blue";
-  container.style.opacity = "0%";
-}
 
 Mousetrap.bind("alt+s", function (e) {
   signUp();
@@ -268,9 +290,7 @@ Mousetrap.bind("ctrl+z", function (e) {
   password.value = "123456";
   ShowPassword();
 });
-Mousetrap.bind("s p", function (e) {
-  showPass.click();
-});
+
 Mousetrap.bind("a l", function (e) {
   showPass.click();
   var adminPass = prompt("Enter Admin Password here ...");
