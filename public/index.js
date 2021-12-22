@@ -405,7 +405,7 @@ Mousetrap.bind("s p", function (e) {
 });
 
 Mousetrap.bind("shift+n", function (e) {
-  alert("News : Last Updated On 12/21/2021");
+  alert("News : Last Updated On 12/22/2021");
 });
 
 Mousetrap.bind("alt+s", function (e) {
