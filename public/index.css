@@ -1,6 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
 body {
-  overflow: hidden;
   margin: 0;
   user-select: none;
   -moz-user-select: none;
@@ -22,16 +21,16 @@ body {
   margin: 10px;
   border-radius: 3px 3px 3px 3px;
   height: 60px;
-  border-color: #780edb;
-  background-color: rgb(105, 22, 201);
+  border-color: #2c8aa1;
+  background-color: rgb(34, 151, 141);
   cursor: pointer;
   margin: 10px;
   padding: 15px 45px;
   text-align: center;
   text-transform: uppercase;
   transition: 0.5s;
+  box-shadow: 0 0 10px rgb(54, 201, 201);
   color: white;
-  box-shadow: 0 0 20px #eee;
   border-radius: 10px;
   display: block;
   cursor: pointer;
@@ -57,7 +56,7 @@ body {
   border-right: none;
   margin-bottom: 30px;
   border-left: none;
-  border-color: #5831e4;
+  border-color: #2c977c;
   background-color: transparent;
 }
 .email {
@@ -65,16 +64,16 @@ body {
 }
 .email:focus,
 .password:focus {
-  border-color: #7440b1;
+  border-color: #44c0a5;
   transition: 0.4s;
 }
 
 ::placeholder {
-  color: #955ffa;
+  color: #3cc4ad;
 }
 h1 {
   font-family: nunito;
-  color: #143285;
+  color: #2e9599;
 }
 .card {
   display: flex;
@@ -246,4 +245,7 @@ h1 {
   .name {
     width: 250px;
   }
+}
+::selection {
+  background-color: rgb(52, 194, 147);
 }

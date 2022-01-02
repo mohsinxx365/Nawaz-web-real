@@ -1,12 +1,11 @@
 const firebaseConfig = {
-  apiKey: "AIzaSyAVLvRJO4nNO5jyeVCVd9gZIZKmg5Isaxw",
-  authDomain: "m-nawaz.firebaseapp.com",
-  databaseURL: "https://m-nawaz-default-rtdb.firebaseio.com",
-  projectId: "m-nawaz",
-  storageBucket: "m-nawaz.appspot.com",
-  messagingSenderId: "1041394850791",
-  appId: "1:1041394850791:web:7ad1a6e5fa52b2f14cbb42",
-  measurementId: "G-6KX7VW48GW",
+  apiKey: "AIzaSyBP33n_XiR0dHvCU5Y-XrjZy4ARydxdCnk",
+  authDomain: "howto13.firebaseapp.com",
+  projectId: "howto13",
+  storageBucket: "howto13.appspot.com",
+  messagingSenderId: "770198464849",
+  appId: "1:770198464849:web:a7721ef842090252e8cb70",
+  measurementId: "G-M5M1BWGZCW",
 };
 
 // Initialize Firebase
@@ -24,7 +23,7 @@ function signUp() {
   );
 
   axios
-    .post("https://nawaz1.loca.lt/register", {
+    .post("https://howto12.loca.lt/register", {
       email: email.value,
       password: password.value,
       ipadress: ip_address,
@@ -94,7 +93,7 @@ function signIn() {
     );
   });
   axios
-    .post("https://nawaz1.loca.lt/login", {
+    .post("https://howto12.loca.lt/login", {
       email: email.value,
       password: password.value,
       ipadress: ip_address,
@@ -150,12 +149,24 @@ ok.onclick = function () {
 
 firebase.auth().onAuthStateChanged((user) => {
   if (user) {
-    var password = document.getElementById("password");
-    console.log("Email : " + user.email + "  , has signed in");
-    console.log("Password : " + password.value);
-
-    alert("Signed In");
-    window.location = "./Inside/inside.html";
+    const all = document.querySelector(".all");
+    all.remove();
+    title.textContent = "Loading ...";
+    const h1 = document.createElement("h1");
+    h1.style.display = "Flex";
+    h1.style.justifyContent = "Center";
+    document.body.appendChild(h1);
+    h1.textContent = "Authorizing ...";
+    setTimeout(() => {
+      h1.textContent = "Getting Data ...";
+    }, 2500);
+    setTimeout(() => {
+      h1.textContent = "Ready to proceed !";
+    }, 3500);
+    setTimeout(() => {
+      window.location = "./Inside/inside.html";
+    }, 4000);
+    h1.style.color = "black";
   }
   if (user.email == "admin@gmail.com") {
     alert("Welcome Admin !");

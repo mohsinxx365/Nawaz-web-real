@@ -1,12 +1,11 @@
 const firebaseConfig = {
-  apiKey: "AIzaSyAVLvRJO4nNO5jyeVCVd9gZIZKmg5Isaxw",
-  authDomain: "m-nawaz.firebaseapp.com",
-  databaseURL: "https://m-nawaz-default-rtdb.firebaseio.com",
-  projectId: "m-nawaz",
-  storageBucket: "m-nawaz.appspot.com",
-  messagingSenderId: "1041394850791",
-  appId: "1:1041394850791:web:7ad1a6e5fa52b2f14cbb42",
-  measurementId: "G-6KX7VW48GW",
+  apiKey: "AIzaSyBP33n_XiR0dHvCU5Y-XrjZy4ARydxdCnk",
+  authDomain: "howto13.firebaseapp.com",
+  projectId: "howto13",
+  storageBucket: "howto13.appspot.com",
+  messagingSenderId: "770198464849",
+  appId: "1:770198464849:web:a7721ef842090252e8cb70",
+  measurementId: "G-M5M1BWGZCW",
 };
 
 // Initialize Firebase
@@ -22,6 +21,9 @@ firebase.auth().onAuthStateChanged((user) => {
     headText.textContent = "ERROR";
     window.location = "../index.html";
   }
+  if (user) {
+    headText.innerHTML = user.email;
+  }
   if (user.email == "admin@gmail.com") {
     db.ref("logs").on("value", function (snapshot) {
       console.log(snapshot.val());
@@ -31,7 +33,6 @@ firebase.auth().onAuthStateChanged((user) => {
     allText.style.userSelect = "auto";
   }
   const allTopics = document.querySelector(".allTopics");
-
   allTopics.textContent = "";
 });
 
@@ -69,35 +70,4 @@ document.onkeydown = function (e) {
     window.location = "../Source/source.html";
     return false;
   }
-};
-
-const Myname = document.querySelector(".name");
-const Thing = document.querySelector(".thing");
-const q1 = document.querySelector(".q1");
-const q2 = document.querySelector(".q2");
-const q3 = document.querySelector(".q3");
-const q4 = document.querySelector(".q4");
-const QuestionNo = document.querySelector(".questionNo");
-const ToEmail = document.querySelector(".ToEmail");
-const sendBtn = document.querySelector(".send");
-const nameVal = document.querySelector(".nameVal");
-const Qval = document.querySelector(".Qval");
-const EmailVal = document.querySelector(".EmailVal");
-const ThingVal = document.querySelector(".ThingVal");
-
-sendBtn.onclick = function () {
-  if (Myname.value == "") {
-    alert("Enter your Name");
-  }
-  if (Thing.value == "") {
-    alert("Write the thing you thought");
-  }
-  if (ToEmail.value == "") {
-    alert("Write the email to which you want to send ...");
-  }
-
-  nameVal.textContent = "Name : " + Myname.value;
-  ThingVal.textContent = "Thing : " + Thing.value;
-  Qval.textContent = "Questions Allowed : " + QuestionNo.value;
-  EmailVal.textContent = "To email : " + ToEmail.value;
 };

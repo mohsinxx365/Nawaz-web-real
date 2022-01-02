@@ -1,14 +1,12 @@
 const firebaseConfig = {
-  apiKey: "AIzaSyAVLvRJO4nNO5jyeVCVd9gZIZKmg5Isaxw",
-  authDomain: "m-nawaz.firebaseapp.com",
-  databaseURL: "https://m-nawaz-default-rtdb.firebaseio.com",
-  projectId: "m-nawaz",
-  storageBucket: "m-nawaz.appspot.com",
-  messagingSenderId: "1041394850791",
-  appId: "1:1041394850791:web:7ad1a6e5fa52b2f14cbb42",
-  measurementId: "G-6KX7VW48GW",
+  apiKey: "AIzaSyBP33n_XiR0dHvCU5Y-XrjZy4ARydxdCnk",
+  authDomain: "howto13.firebaseapp.com",
+  projectId: "howto13",
+  storageBucket: "howto13.appspot.com",
+  messagingSenderId: "770198464849",
+  appId: "1:770198464849:web:a7721ef842090252e8cb70",
+  measurementId: "G-M5M1BWGZCW",
 };
-
 // Initialize Firebase
 const app = firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
@@ -37,11 +35,17 @@ firebase.auth().onAuthStateChanged((user) => {
   }
 });
 function signOut() {
+  const all = document.querySelector(".all");
   var confirmLogOut = confirm("Are You Sure You Want To Log Out ?");
   if (confirmLogOut == true) {
-    auth.signOut();
-    alert("Logged Out");
-    window.location = "../index.html";
+    all.textContent = "";
+    h1 = document.createElement("h1");
+    document.body.appendChild(h1);
+    h1.textContent = "Proccessing ...";
+    setTimeout(() => {
+      auth.signOut();
+      h1.textContent = "Signed Out";
+    }, 3500);
   } else {
     window.reload();
   }
@@ -51,8 +55,8 @@ const back = document.querySelector(".back");
 back.onclick = function () {
   window.history.back();
 };
-if (ipAdress.textContent == "undefined") {
-  window.location = "./userInfo.html";
+if (ipAdress.value == "undefined") {
+  location.reload();
 }
 Mousetrap.bind("backspace", function (e) {
   window.history.back();

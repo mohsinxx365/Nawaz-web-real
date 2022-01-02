@@ -23,41 +23,41 @@
 
 
 <body>
-    <div class="ban"></div>
-    <div class="ban_time"></div>
-    <div class="ban_reason"></div>
-    <div class="align2">
-        <div class="message">
-            <div class="text"></div>
+    <div class="all">
+        <div class="ban"></div>
+        <div class="ban_time"></div>
+        <div class="ban_reason"></div>
+        <div class="align2">
+            <div class="message">
+                <div class="text"></div>
+            </div>
         </div>
-    </div>
-    <div class="align">
-        <button class="invisible"></button>
-    </div>
-    <div class="align">
-        <p class="info"></p>
+        <div class="align">
+            <button class="invisible"></button>
+        </div>
+        <div class="align">
+            <p class="info"></p>
 
-    </div>
-    <div class="container">
-        <div class="card">
-            <div class="formContainer">
+        </div>
+        <div class="container">
+            <div class="card">
+                <div class="formContainer">
 
-                <h1>Login / Register</h1>
-                <input type="email" placeholder="Email" id="email" class="email" oninput="myFunction()">
-                <input type="password" placeholder="Password" id="password" class="password">
-                <div class="check">
-                    <div class="showText">Show Password</div><input type="checkbox" class="showPass"
-                        onclick="ShowPassword()" />
+                    <h1>Login / Register</h1>
+                    <input type="email" placeholder="Email" id="email" class="email" oninput="myFunction()">
+                    <input type="password" placeholder="Password" id="password" class="password">
+                    <div class="check">
+                        <div class="showText">Show Password</div><input type="checkbox" class="showPass"
+                            onclick="ShowPassword()" />
+                    </div>
+                    <button class="btn" onclick="signIn()">Login</button>
+                    <button class="btn" onclick="signUp()">Register</button>
+                    <span id="ipaddress"></span>
+                    <a class="forgotPass" onclick="forgotPass()">Forgot Password?</a>
                 </div>
-                <button class="btn" onclick="signIn()">Login</button>
-                <button class="btn" onclick="signUp()">Register</button>
-                <span id="ipaddress"></span>
-                <a class="forgotPass" onclick="forgotPass()">Forgot Password?</a>
             </div>
         </div>
     </div>
-    <script>
-    </script>
 </body>
 
 </html>
