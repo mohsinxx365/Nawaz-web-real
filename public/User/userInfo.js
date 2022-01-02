@@ -17,6 +17,7 @@ const emailID = document.querySelector(".email");
 const UID = document.querySelector(".uid");
 const createTime = document.querySelector(".createTime");
 const ipAdress = document.querySelector(".ipAdress");
+const title = document.querySelector("title");
 
 function DisplayIP(response) {
   ip_address = response.ip;
@@ -41,6 +42,7 @@ function signOut() {
     all.textContent = "";
     h1 = document.createElement("h1");
     document.body.appendChild(h1);
+    title.textContent = "Processing ...";
     h1.textContent = "Proccessing ...";
     setTimeout(() => {
       auth.signOut();
