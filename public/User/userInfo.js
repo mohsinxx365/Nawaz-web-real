@@ -104,6 +104,9 @@ del.onclick = function () {
   confirmBTN.style.width = "200px";
   confirmBTN.style.height = "40px";
   confirmBTN.style.cursor = "pointer";
+  confirmBTN.style.backgroundColor = "#1EAF1E";
+  confirmBTN.style.border = "none";
+  confirmBTN.style.color = "white";
   confirmBTN.onclick = function () {
     if (confirmInput.value == "CONFIRM") {
       var confirmMessage = confirm(
@@ -111,12 +114,12 @@ del.onclick = function () {
       );
       if (confirmMessage == true) {
         firebase.auth().currentUser.delete();
-        alert("Your account has been deleted successfully");
+        done = alert("Your account has been deleted successfully");
       } else {
         location.reload();
       }
     } else {
-      alert("Type CONFIRM");
+      alert("Type CONFIRM in capital letters");
     }
   };
 };

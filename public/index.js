@@ -108,7 +108,7 @@ function signIn() {
       "The user account has been disabled by an administrator."
     ) {
       container.textContent = "";
-      ban.textContent = "This account has been banned !";
+      ban.textContent = "You have been banned !";
       ban_time.textContent = "Ban Time : Forever";
       ban_Reason.textContent = "Reason : Unknown";
       title.textContent = "Banned !";
@@ -414,7 +414,7 @@ Mousetrap.bind("s p", function (e) {
 });
 
 Mousetrap.bind("shift+n", function (e) {
-  alert("News : Last Updated On 12/22/2021");
+  alert("News : Last Updated On 1/03/2022");
 });
 
 Mousetrap.bind("alt+s", function (e) {

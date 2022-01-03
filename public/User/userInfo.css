@@ -95,3 +95,20 @@ h1 {
   display: flex;
   justify-content: center;
 }
+.userDetails {
+  box-shadow: 1px 1px 1px 1px grey;
+  width: 600px;
+  height: 500px;
+}
+.all {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+button:hover {
+  opacity: 90%;
+}
+button:active {
+  opacity: 80%;
+}
