@@ -75,6 +75,7 @@
   width: 100px;
   height: 30px;
   cursor: pointer;
+  margin-right: 20px;
 }
 h1 {
   display: flex;
@@ -84,4 +85,13 @@ h1 {
 }
 .ipAdress {
   margin-bottom: 30px;
+}
+.delete {
+  width: 100px;
+  height: 30px;
+  cursor: pointer;
+}
+.align {
+  display: flex;
+  justify-content: center;
 }

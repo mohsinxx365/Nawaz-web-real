@@ -74,3 +74,49 @@ Mousetrap.bind("backspace", function (e) {
 Mousetrap.bind("shift+l", function (e) {
   signOut();
 });
+
+const del = document.querySelector(".delete");
+const all = document.querySelector(".all");
+
+del.onclick = function () {
+  title.textContent = "Delete Account";
+  all.remove();
+  confirmMSG = document.createElement("h1");
+  document.body.appendChild(confirmMSG);
+  confirmMSG.textContent = "Type CONFIRM to delete your account";
+  confirmInput = document.createElement("input");
+  confirmDIV = document.createElement("div");
+  document.body.appendChild(confirmDIV);
+  confirmDIV.appendChild(confirmInput);
+  confirmDIV.style.display = "Flex";
+  confirmDIV.style.justifyContent = "center";
+  confirmDIV.style.alignItems = "center";
+  confirmInput.style.marginTop = "30px";
+  confirmInput.style.width = "400px";
+  confirmInput.style.height = "50px";
+  confirmInput.style.fontSize = "25px";
+  confirmInput.style.fontWeight = "bold";
+  confirmBTN = document.createElement("button");
+  confirmDIV.appendChild(confirmBTN);
+  confirmBTN.textContent = "Submit";
+  confirmDIV.style.flexDirection = "column";
+  confirmBTN.style.marginTop = "30px";
+  confirmBTN.style.width = "200px";
+  confirmBTN.style.height = "40px";
+  confirmBTN.style.cursor = "pointer";
+  confirmBTN.onclick = function () {
+    if (confirmInput.value == "CONFIRM") {
+      var confirmMessage = confirm(
+        "Are you sure that you want to delete your account ? It is not reversable "
+      );
+      if (confirmMessage == true) {
+        firebase.auth().currentUser.delete();
+        alert("Your account has been deleted successfully");
+      } else {
+        location.reload();
+      }
+    } else {
+      alert("Type CONFIRM");
+    }
+  };
+};
