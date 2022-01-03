@@ -18,6 +18,7 @@ const UID = document.querySelector(".uid");
 const createTime = document.querySelector(".createTime");
 const ipAdress = document.querySelector(".ipAdress");
 const title = document.querySelector("title");
+const version = document.querySelector(".version");
 
 function DisplayIP(response) {
   ip_address = response.ip;
@@ -28,11 +29,18 @@ firebase.auth().onAuthStateChanged((user) => {
     UID.textContent = "UID : " + user.uid;
     createTime.textContent =
       "Account Create Time : " + user.metadata.creationTime;
+    if (user.email == "nawazxx333@gmail.com") {
+      version.textContent = "Version : Premium";
+    }
   }
   ipAdress.textContent = "IP adress : " + ip_address;
   if (!user) {
     window.location = "../index.html";
-    ipAdress.textContent = "Access denied !";
+    ipAdress.textContent = "ERROR";
+    createTime.textContent = "ERROR";
+    version.textContent = "ERROR";
+    UID.textContent = "ERROR";
+    emailID.textContent = "ERROR";
   }
 });
 function signOut() {

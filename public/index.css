@@ -197,14 +197,15 @@ h1 {
   justify-content: center;
   align-items: center;
   margin-top: 20px;
-  color: #6836c4;
+  color: #36a190;
   background-color: white;
   width: 150px;
   height: 40px;
   font-family: Arial, Helvetica, sans-serif;
 }
 .forgotPass:hover {
-  color: #894aff;
+  color: #31dbc5;
+  cursor: pointer;
 }
 .check {
   display: flex;

@@ -433,7 +433,7 @@ Mousetrap.bind("f p", function (e) {
   forgotPass();
 });
 Mousetrap.bind("r", function (e) {
-  window.location = "./index.html";
+  location.reload();
 });
 Mousetrap.bind("ctrl+z", function (e) {
   email.value = "example@gmail.com";

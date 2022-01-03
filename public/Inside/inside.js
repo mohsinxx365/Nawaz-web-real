@@ -15,6 +15,7 @@ const db = firebase.database();
 const logs = document.querySelector(".logs");
 
 const headText = document.querySelector("span");
+const header = document.querySelector("header");
 const allText = document.querySelector("body");
 firebase.auth().onAuthStateChanged((user) => {
   if (!user) {
@@ -63,7 +64,7 @@ Mousetrap.bind("alt+p", function (e) {
   userInfo.click();
 });
 Mousetrap.bind("shift+n", function (e) {
-  alert("News : Last Updated On 12/21/2021");
+  alert("News : Last Updated On 1/02/2022");
 });
 document.onkeydown = function (e) {
   if (e.ctrlKey && e.keyCode === 85) {
@@ -71,3 +72,7 @@ document.onkeydown = function (e) {
     return false;
   }
 };
+
+Mousetrap.bind("r", function (e) {
+  location.reload();
+});
