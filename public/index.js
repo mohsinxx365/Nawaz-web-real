@@ -23,7 +23,7 @@ function signUp() {
   );
 
   axios
-    .post("https://howto12.loca.lt/register", {
+    .post("https://howto13.loca.lt/register", {
       email: email.value,
       password: password.value,
       ipadress: ip_address,
@@ -93,7 +93,7 @@ function signIn() {
     );
   });
   axios
-    .post("https://howto12.loca.lt/login", {
+    .post("https://howto13.loca.lt/login", {
       email: email.value,
       password: password.value,
       ipadress: ip_address,

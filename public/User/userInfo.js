@@ -29,11 +29,65 @@ firebase.auth().onAuthStateChanged((user) => {
     UID.textContent = "UID : " + user.uid;
     createTime.textContent =
       "Account Create Time : " + user.metadata.creationTime;
+    ipAdress.textContent = "IP adress : " + ip_address;
+
+    del.onclick = function () {
+      title.textContent = "Delete Account";
+      all.remove();
+      confirmMSG = document.createElement("h1");
+      document.body.appendChild(confirmMSG);
+      confirmMSG.textContent = "Type CONFIRM to delete your account";
+      confirmInput = document.createElement("input");
+      confirmDIV = document.createElement("div");
+      document.body.appendChild(confirmDIV);
+      confirmDIV.appendChild(confirmInput);
+      confirmDIV.style.display = "Flex";
+      confirmDIV.style.justifyContent = "center";
+      confirmDIV.style.alignItems = "center";
+      confirmInput.style.marginTop = "30px";
+      confirmInput.style.width = "400px";
+      confirmInput.style.height = "50px";
+      confirmInput.style.fontSize = "25px";
+      confirmInput.style.fontWeight = "bold";
+      confirmBTN = document.createElement("button");
+      confirmDIV.appendChild(confirmBTN);
+      confirmBTN.textContent = "Submit";
+      confirmDIV.style.flexDirection = "column";
+      confirmBTN.style.marginTop = "30px";
+      confirmBTN.style.width = "200px";
+      confirmBTN.style.height = "40px";
+      confirmBTN.style.cursor = "pointer";
+      confirmBTN.style.backgroundColor = "#1EAF1E";
+      confirmBTN.style.border = "none";
+      confirmBTN.style.color = "white";
+      confirmBTN.onclick = function () {
+        if (confirmInput.value == "CONFIRM") {
+          var confirmMessage = confirm(
+            "Are you sure that you want to delete your account ? It is not reversable "
+          );
+          if (confirmMessage == true) {
+            axios
+              .post("https://howto13.loca.lt/delete", {
+                email: user.email,
+              })
+              .then((res) => {
+                console.log(res.data);
+              });
+            firebase.auth().currentUser.delete();
+            alert("Your account has been deleted successfully");
+          } else {
+            location.reload();
+          }
+        } else {
+          alert("Type CONFIRM in capital letters");
+        }
+      };
+    };
+
     if (user.email == "nawazxx333@gmail.com") {
       version.textContent = "Version : Premium";
     }
   }
-  ipAdress.textContent = "IP adress : " + ip_address;
   if (!user) {
     window.location = "../index.html";
     ipAdress.textContent = "ERROR";
@@ -78,48 +132,55 @@ Mousetrap.bind("shift+l", function (e) {
 const del = document.querySelector(".delete");
 const all = document.querySelector(".all");
 
-del.onclick = function () {
-  title.textContent = "Delete Account";
-  all.remove();
-  confirmMSG = document.createElement("h1");
-  document.body.appendChild(confirmMSG);
-  confirmMSG.textContent = "Type CONFIRM to delete your account";
-  confirmInput = document.createElement("input");
-  confirmDIV = document.createElement("div");
-  document.body.appendChild(confirmDIV);
-  confirmDIV.appendChild(confirmInput);
-  confirmDIV.style.display = "Flex";
-  confirmDIV.style.justifyContent = "center";
-  confirmDIV.style.alignItems = "center";
-  confirmInput.style.marginTop = "30px";
-  confirmInput.style.width = "400px";
-  confirmInput.style.height = "50px";
-  confirmInput.style.fontSize = "25px";
-  confirmInput.style.fontWeight = "bold";
-  confirmBTN = document.createElement("button");
-  confirmDIV.appendChild(confirmBTN);
-  confirmBTN.textContent = "Submit";
-  confirmDIV.style.flexDirection = "column";
-  confirmBTN.style.marginTop = "30px";
-  confirmBTN.style.width = "200px";
-  confirmBTN.style.height = "40px";
-  confirmBTN.style.cursor = "pointer";
-  confirmBTN.style.backgroundColor = "#1EAF1E";
-  confirmBTN.style.border = "none";
-  confirmBTN.style.color = "white";
-  confirmBTN.onclick = function () {
-    if (confirmInput.value == "CONFIRM") {
-      var confirmMessage = confirm(
-        "Are you sure that you want to delete your account ? It is not reversable "
-      );
-      if (confirmMessage == true) {
-        firebase.auth().currentUser.delete();
-        done = alert("Your account has been deleted successfully");
-      } else {
-        location.reload();
-      }
-    } else {
-      alert("Type CONFIRM in capital letters");
-    }
-  };
-};
+// del.onclick = function () {
+//   title.textContent = "Delete Account";
+//   all.remove();
+//   confirmMSG = document.createElement("h1");
+//   document.body.appendChild(confirmMSG);
+//   confirmMSG.textContent = "Type CONFIRM to delete your account";
+//   confirmInput = document.createElement("input");
+//   confirmDIV = document.createElement("div");
+//   document.body.appendChild(confirmDIV);
+//   confirmDIV.appendChild(confirmInput);
+//   confirmDIV.style.display = "Flex";
+//   confirmDIV.style.justifyContent = "center";
+//   confirmDIV.style.alignItems = "center";
+//   confirmInput.style.marginTop = "30px";
+//   confirmInput.style.width = "400px";
+//   confirmInput.style.height = "50px";
+//   confirmInput.style.fontSize = "25px";
+//   confirmInput.style.fontWeight = "bold";
+//   confirmBTN = document.createElement("button");
+//   confirmDIV.appendChild(confirmBTN);
+//   confirmBTN.textContent = "Submit";
+//   confirmDIV.style.flexDirection = "column";
+//   confirmBTN.style.marginTop = "30px";
+//   confirmBTN.style.width = "200px";
+//   confirmBTN.style.height = "40px";
+//   confirmBTN.style.cursor = "pointer";
+//   confirmBTN.style.backgroundColor = "#1EAF1E";
+//   confirmBTN.style.border = "none";
+//   confirmBTN.style.color = "white";
+//   confirmBTN.onclick = function () {
+//     if (confirmInput.value == "CONFIRM") {
+//       var confirmMessage = confirm(
+//         "Are you sure that you want to delete your account ? It is not reversable "
+//       );
+//       if (confirmMessage == true) {
+//         axios
+//           .post("https://howto13.loca.lt/delete", {
+//             email: emailID.value,
+//           })
+//           .then((res) => {
+//             console.log(res.data);
+//           });
+//         firebase.auth().currentUser.delete();
+//         alert("Your account has been deleted successfully");
+//       } else {
+//         location.reload();
+//       }
+//     } else {
+//       alert("Type CONFIRM in capital letters");
+//     }
+//   };
+// };
