@@ -161,12 +161,12 @@ if (Update == true) {
 }
 
 Mousetrap.bind("shift+n", function (e) {
-  alert("News : Last Updated On 1/03/2022");
+  alert("News : Last Updated On 1/04/2022");
 });
 
 document.onkeydown = function (e) {
   if (e.ctrlKey && e.keyCode === 85) {
-    window.location = "../Source/source.html";
+    window.location = "./Source/source.html";
     return false;
   }
 };
