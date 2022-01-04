@@ -129,6 +129,13 @@ function signIn() {
       alert("Network connection not found !");
     } else if (
       e.message.toString() ==
+      "Access to this account has been temporarily disabled due to many failed login attempts. You can immediately restore it by resetting your password or you can try again later."
+    ) {
+      alert(
+        "Login to this account disabled due to so many fail attempts , reset your account password to access it immediately or try again later."
+      );
+    } else if (
+      e.message.toString() ==
       "There is no user record corresponding to this identifier. The user may have been deleted."
     ) {
       alert(`The Email: "${email.value}" Does Not Exist`);
@@ -561,3 +568,35 @@ document.onkeydown = function (e) {
     return false;
   }
 };
+function faceSign() {
+  var provider = new firebase.auth.FacebookAuthProvider();
+  provider.addScope("user_birthday");
+  firebase.auth().languageCode = "it";
+  provider.setCustomParameters({
+    display: "popup",
+  });
+  firebase
+    .auth()
+    .signInWithPopup(provider)
+    .then((result) => {
+      /** @type {firebase.auth.OAuthCredential} */
+      var credential = result.credential;
+
+      var user = result.user;
+
+      // This gives you a Facebook Access Token. You can use it to access the Facebook API.
+      var accessToken = credential.accessToken;
+      // ...
+    })
+    .catch((error) => {
+      // Handle Errors here.
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      // The email of the user's account used.
+      var email = error.email;
+      // The firebase.auth.AuthCredential type that was used.
+      var credential = error.credential;
+
+      // ...
+    });
+}

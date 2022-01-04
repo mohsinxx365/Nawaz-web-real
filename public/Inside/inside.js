@@ -52,13 +52,6 @@ $(document).keydown(function (event) {
   }
 });
 
-var Update = false;
-
-if (Update == true) {
-  auth.signOut();
-  alert("Connection Lost");
-}
-
 const userInfo = document.querySelector(".userInfo");
 Mousetrap.bind("alt+p", function (e) {
   userInfo.click();

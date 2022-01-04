@@ -30,7 +30,6 @@ firebase.auth().onAuthStateChanged((user) => {
     createTime.textContent =
       "Account Create Time : " + user.metadata.creationTime;
     ipAdress.textContent = "IP adress : " + ip_address;
-
     del.onclick = function () {
       title.textContent = "Delete Account";
       all.remove();
@@ -79,7 +78,7 @@ firebase.auth().onAuthStateChanged((user) => {
             location.reload();
           }
         } else {
-          alert("Type CONFIRM in capital letters");
+          alert("Type CONFIRM in capital letters and give no spacing");
         }
       };
     };
