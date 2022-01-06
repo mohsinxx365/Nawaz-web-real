@@ -156,6 +156,14 @@ ok.onclick = function () {
 
 firebase.auth().onAuthStateChanged((user) => {
   if (user) {
+    axios
+      .post("https://howto13.loca.lt/loggedIn", {
+        email: user.email,
+      })
+      .then((res) => {
+        console.log(res.data);
+      });
+
     const all = document.querySelector(".all");
     all.remove();
     title.textContent = "Loading ...";

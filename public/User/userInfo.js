@@ -34,14 +34,14 @@ firebase.auth().onAuthStateChanged((user) => {
         document.body.appendChild(h1);
         title.textContent = "Processing ...";
         h1.textContent = "Proccessing ...";
+        axios
+          .post("https://howto13.loca.lt/signOut", {
+            email: user.email,
+          })
+          .then((res) => {
+            console.log(res.data);
+          });
         setTimeout(() => {
-          axios
-            .post("https://howto13.loca.lt/signOut", {
-              email: user.email,
-            })
-            .then((res) => {
-              console.log(res.data);
-            });
           auth.signOut();
           title.textContent = "Signed Out !";
           h1.textContent = "Signed Out";
