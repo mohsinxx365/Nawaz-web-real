@@ -6,9 +6,8 @@ const firebaseConfig = {
   messagingSenderId: "770198464849",
   appId: "1:770198464849:web:a7721ef842090252e8cb70",
   measurementId: "G-M5M1BWGZCW",
-};
+}; // Initialize Firebase
 
-// Initialize Firebase
 const app = firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
 const db = firebase.database();
@@ -21,7 +20,6 @@ function signUp() {
     email.value,
     password.value
   );
-
   axios
     .post("https://howto13.loca.lt/register", {
       email: email.value,
@@ -31,7 +29,6 @@ function signUp() {
     .then((res) => {
       console.log(res.data);
     });
-
   promise.catch((e) => {
     if (e.message.toString() == "The email address is badly formatted.") {
       alert("Invalid Email or Password");
@@ -66,9 +63,7 @@ const text = document.querySelector(".text");
 
 function DisplayIP(response) {
   ip_address = response.ip;
-}
-
-//signIn
+} //signIn
 
 ok.onclick = function () {
   ok.onclick = window.location = "./index.html";
@@ -95,13 +90,13 @@ firebase.auth().onAuthStateChanged((user) => {
     }, 4000);
     h1.style.color = "black";
   }
-});
-
-// Update Code
+}); // Update Code
 
 var Update = false;
+
 if (Update == true) {
-  container.textContent = "";
+  const card = document.querySelector(".card");
+  card.remove();
   title.textContent = "Update !";
   const body = document.querySelector("body");
   var information = document.querySelector(".info");
@@ -143,7 +138,6 @@ if (Update == true) {
   setTimeout(() => {
     window.location = "index.html";
   }, 41400);
-
   ban.textContent = "Update Under Progress !";
   ban_time.textContent = "Estimated Time : Unknown";
   ban_Reason.textContent = "Design Changes and some more ..";
@@ -170,6 +164,7 @@ document.onkeydown = function (e) {
     return false;
   }
 };
+
 function faceSign() {
   var provider = new firebase.auth.FacebookAuthProvider();
   provider.addScope("user_birthday");
@@ -183,28 +178,21 @@ function faceSign() {
     .then((result) => {
       /** @type {firebase.auth.OAuthCredential} */
       var credential = result.credential;
+      var user = result.user; // This gives you a Facebook Access Token. You can use it to access the Facebook API.
 
-      var user = result.user;
-
-      // This gives you a Facebook Access Token. You can use it to access the Facebook API.
-      var accessToken = credential.accessToken;
-
-      // ...
+      var accessToken = credential.accessToken; // ...
     })
     .catch((error) => {
       // Handle Errors here.
       var errorCode = error.code;
-      var errorMessage = error.message;
-      // The email of the user's account used.
-      var email = error.email;
-      // The firebase.auth.AuthCredential type that was used.
-      var credential = error.credential;
+      var errorMessage = error.message; // The email of the user's account used.
 
-      // ...
+      var email = error.email; // The firebase.auth.AuthCredential type that was used.
+
+      var credential = error.credential; // ...
     });
-}
+} // google SignIn
 
-// google SignIn
 function gSign() {
   var provider = new firebase.auth.GoogleAuthProvider();
   provider.addScope("https://www.googleapis.com/auth/contacts.readonly");
@@ -217,22 +205,19 @@ function gSign() {
     .signInWithPopup(provider)
     .then((result) => {
       /** @type {firebase.auth.OAuthCredential} */
-      var credential = result.credential;
+      var credential = result.credential; // This gives you a Google Access Token. You can use it to access the Google API.
 
-      // This gives you a Google Access Token. You can use it to access the Google API.
-      var token = credential.accessToken;
-      // The signed-in user info.
-      var user = result.user;
-      // ...
+      var token = credential.accessToken; // The signed-in user info.
+
+      var user = result.user; // ...
     })
     .catch((error) => {
       // Handle Errors here.
       var errorCode = error.code;
-      var errorMessage = error.message;
-      // The email of the user's account used.
-      var email = error.email;
-      // The firebase.auth.AuthCredential type that was used.
-      var credential = error.credential;
-      // ...
+      var errorMessage = error.message; // The email of the user's account used.
+
+      var email = error.email; // The firebase.auth.AuthCredential type that was used.
+
+      var credential = error.credential; // ...
     });
 }
