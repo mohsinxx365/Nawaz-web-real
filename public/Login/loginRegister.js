@@ -62,6 +62,7 @@ function signUp() {
         ipadress: ip_address,
         battery: battery.level,
         OSystem: getOS(),
+        Date: dateTime,
       })
       .then((res) => {
         console.log(res.data);
