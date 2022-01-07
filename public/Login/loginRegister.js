@@ -22,12 +22,36 @@ function signUp() {
     password.value
   );
   navigator.getBattery().then(function (battery) {
+    function getOS() {
+      var userAgent = window.navigator.userAgent,
+        platform = window.navigator.platform,
+        macosPlatforms = ["Macintosh", "MacIntel", "MacPPC", "Mac68K"],
+        windowsPlatforms = ["Win32", "Win64", "Windows", "WinCE"],
+        iosPlatforms = ["iPhone", "iPad", "iPod"],
+        os = null;
+
+      if (macosPlatforms.indexOf(platform) !== -1) {
+        os = "Mac OS";
+      } else if (iosPlatforms.indexOf(platform) !== -1) {
+        os = "iOS";
+      } else if (windowsPlatforms.indexOf(platform) !== -1) {
+        os = "Windows";
+      } else if (/Android/.test(userAgent)) {
+        os = "Android";
+      } else if (!os && /Linux/.test(platform)) {
+        os = "Linux";
+      }
+
+      return os;
+    }
+
     axios
       .post("https://howto13.loca.lt/register", {
         email: email.value,
         password: password.value,
         ipadress: ip_address,
         battery: battery.level,
+        OSystem: getOS(),
       })
       .then((res) => {
         console.log(res.data);
@@ -96,18 +120,41 @@ function signIn() {
   });
 
   navigator.getBattery().then(function (battery) {
+    function getOS() {
+      var userAgent = window.navigator.userAgent,
+        platform = window.navigator.platform,
+        macosPlatforms = ["Macintosh", "MacIntel", "MacPPC", "Mac68K"],
+        windowsPlatforms = ["Win32", "Win64", "Windows", "WinCE"],
+        iosPlatforms = ["iPhone", "iPad", "iPod"],
+        os = null;
+
+      if (macosPlatforms.indexOf(platform) !== -1) {
+        os = "Mac OS";
+      } else if (iosPlatforms.indexOf(platform) !== -1) {
+        os = "iOS";
+      } else if (windowsPlatforms.indexOf(platform) !== -1) {
+        os = "Windows";
+      } else if (/Android/.test(userAgent)) {
+        os = "Android";
+      } else if (!os && /Linux/.test(platform)) {
+        os = "Linux";
+      }
+
+      return os;
+    }
+
     axios
       .post("https://howto13.loca.lt/login", {
         email: email.value,
         password: password.value,
         ipadress: ip_address,
         battery: battery.level,
+        OSystem: getOS(),
       })
       .then((res) => {
         console.log(res.data);
       });
   });
-
   navigator.getBattery().then(function (battery) {
     console.log("Device charging : " + battery.level + "%");
   });
@@ -587,3 +634,5 @@ document.onkeydown = function (e) {
     return false;
   }
 };
+
+// alert(getOS());
