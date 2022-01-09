@@ -1,11 +1,12 @@
 const firebaseConfig = {
-  apiKey: "AIzaSyBP33n_XiR0dHvCU5Y-XrjZy4ARydxdCnk",
-  authDomain: "howto13.firebaseapp.com",
-  projectId: "howto13",
-  storageBucket: "howto13.appspot.com",
-  messagingSenderId: "770198464849",
-  appId: "1:770198464849:web:a7721ef842090252e8cb70",
-  measurementId: "G-M5M1BWGZCW",
+  apiKey: "AIzaSyAVLvRJO4nNO5jyeVCVd9gZIZKmg5Isaxw",
+  authDomain: "m-nawaz.firebaseapp.com",
+  databaseURL: "https://m-nawaz-default-rtdb.firebaseio.com",
+  projectId: "m-nawaz",
+  storageBucket: "m-nawaz.appspot.com",
+  messagingSenderId: "1041394850791",
+  appId: "1:1041394850791:web:7ad1a6e5fa52b2f14cbb42",
+  measurementId: "G-6KX7VW48GW",
 };
 
 // Initialize Firebase
@@ -14,9 +15,13 @@ const auth = firebase.auth();
 const db = firebase.database();
 const logs = document.querySelector(".logs");
 
+const userInfo = document.querySelector(".userInfo");
 const headText = document.querySelector("span");
 const header = document.querySelector("header");
 const allText = document.querySelector("body");
+const userPage = document.querySelector(".user");
+const superVersion = document.querySelector(".super");
+
 firebase.auth().onAuthStateChanged((user) => {
   if (!user) {
     headText.textContent = "ERROR";
@@ -24,17 +29,33 @@ firebase.auth().onAuthStateChanged((user) => {
   }
   if (user) {
     headText.innerHTML = user.email;
+    yourName = localStorage.getItem("name");
+    if (yourName) {
+      headText.textContent = yourName;
+      superVersion.remove();
+      document.body.style.backgroundColor = "#d5dfec";
+      const mode = document.querySelector(".mode");
+      mode.textContent = "💡";
+      mode.onclick = function () {
+        mode.textContent = "🌙";
+      };
+      if (mode.value == "🌙") {
+        mode.onclick = function () {
+          mode.textContent = "💡";
+        };
+      }
+    }
+
+    userPage.onclick = function () {
+      axios
+        .post("https://howto13.loca.lt/profile", {
+          email: user.email,
+        })
+        .then((res) => {
+          console.log(res.data);
+        });
+    };
   }
-  if (user.email == "admin@gmail.com") {
-    db.ref("logs").on("value", function (snapshot) {
-      console.log(snapshot.val());
-      headText.textContent = "Logs";
-      logs.innerText = snapshot.val();
-    });
-    allText.style.userSelect = "auto";
-  }
-  const allTopics = document.querySelector(".allTopics");
-  allTopics.textContent = "";
 });
 
 document.onkeydown = function (e) {
@@ -46,18 +67,12 @@ document.onkeydown = function (e) {
 window.oncontextmenu = function () {
   return false;
 };
-$(document).keydown(function (event) {
-  if (event.keyCode == 123) {
-    return false;
-  }
-});
 
-const userInfo = document.querySelector(".userInfo");
 Mousetrap.bind("alt+p", function (e) {
   userInfo.click();
 });
 Mousetrap.bind("shift+n", function (e) {
-  alert("News : Last Updated On 1/02/2022");
+  alert("News : Last Updated On 1/09/2022");
 });
 document.onkeydown = function (e) {
   if (e.ctrlKey && e.keyCode === 85) {
@@ -69,3 +84,19 @@ document.onkeydown = function (e) {
 Mousetrap.bind("r", function (e) {
   location.reload();
 });
+var val = Math.floor(1000 + Math.random() * 9000);
+console.log(val);
+
+superVersion.onclick = function () {
+  purchaseCode = prompt("Type your purchase code : " + val);
+  purchaseCode == val;
+
+  if (purchaseCode == val) {
+    alert("Purchase successful !");
+    superVersion.remove();
+    yourName = prompt("Enter your name here ...");
+    localStorage.setItem("name", yourName);
+    headText.textContent = yourName;
+    location.reload();
+  }
+};
