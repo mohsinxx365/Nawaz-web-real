@@ -33,17 +33,16 @@ firebase.auth().onAuthStateChanged((user) => {
     if (yourName) {
       headText.textContent = yourName;
       superVersion.remove();
-      document.body.style.backgroundColor = "#d5dfec";
       const mode = document.querySelector(".mode");
       mode.textContent = "💡";
+      document.body.style.backgroundColor = "#d5dfec";
       mode.onclick = function () {
         mode.textContent = "🌙";
+        document.body.style.backgroundColor = "#1e193a";
+        header.style.backgroundColor = "#2b207c";
+        headText.style.color = "white";
+        header.style.boxShadow = "3px 3px black";
       };
-      if (mode.value == "🌙") {
-        mode.onclick = function () {
-          mode.textContent = "💡";
-        };
-      }
     }
 
     userPage.onclick = function () {

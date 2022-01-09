@@ -82,6 +82,10 @@ p {
   margin-bottom: 25px;
 }
 .super {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   background-color: white;
   outline: none;
   border: none;
